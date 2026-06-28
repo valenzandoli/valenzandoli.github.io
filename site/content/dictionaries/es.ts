@@ -2,9 +2,9 @@ import type { Dictionary } from "./en";
 
 const dictionary: Dictionary = {
   meta: {
-    title: "Valentin Zandoli — Ops & Data",
+    title: "Valentin Zandoli — Business & Fitness",
     description:
-      "Ingeniero Industrial especializado en análisis operativo, logística y delivery. Transformo datos en decisiones y procesos en sistemas escalables.",
+      "Ingeniero Industrial trabajando en operaciones y business analytics. Con interés en construir en la industria fitness desde el lado del negocio y el producto. Rendimiento, disciplina y mejora continua.",
   },
   nav: {
     about: "Sobre mí",
@@ -19,9 +19,9 @@ const dictionary: Dictionary = {
     eyebrow: "Buenos Aires, Argentina",
     titleLine1: "Valentin",
     titleLine2: "Zandoli.",
-    titleMuted: "Ops & Data.",
+    titleMuted: "Business & Fitness.",
     description:
-      "Ingeniero Industrial especializado en análisis operativo, logística y delivery. Transformo datos en decisiones y procesos en sistemas escalables.",
+      "Ingeniero Industrial trabajando en operaciones y business analytics. Con interés en construir en la industria fitness desde el lado del negocio y el producto. Rendimiento, disciplina y mejora continua.",
     ctaPrimary: "Ver experiencia",
     ctaSecondary: "Contacto",
   },
@@ -30,7 +30,7 @@ const dictionary: Dictionary = {
     paragraphs: [
       "Soy <strong>Ingeniero Industrial</strong> con foco en operaciones, datos y mejora continua. Mi experiencia combina análisis cuantitativo con visión de negocio en entornos de alta velocidad.",
       "En Rappi trabajo sobre <strong>métricas de repartidores, tiempos de entrega y performance de ciudades</strong> en Argentina, construyendo reportes, dashboards y herramientas que aceleran la toma de decisiones.",
-      "Me interesa todo lo que está en la intersección entre <strong>datos, operaciones y producto</strong>: automatizar lo repetitivo, escalar lo que funciona y encontrar el insight que mueve la aguja.",
+      "Más allá del análisis, me atrae la <strong>industria del fitness</strong> — no como coach ni entrenador, sino desde el lado del negocio: cómo escalan las empresas, cómo se construyen productos, y dónde los datos pueden mover la aguja en salud y performance.",
     ],
     skills: {
       dataAndSql: { label: "Datos & SQL", tags: ["Snowflake", "SQL", "Python"] },

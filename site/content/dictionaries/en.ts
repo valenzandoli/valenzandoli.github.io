@@ -1,8 +1,8 @@
 const dictionary = {
   meta: {
-    title: "Valentin Zandoli — Ops & Data",
+    title: "Valentin Zandoli — Business & Fitness",
     description:
-      "Industrial Engineer specializing in operations analytics for logistics and delivery. I turn data into decisions and processes into scalable systems.",
+      "Industrial Engineer working in operations and business analytics. Interested in building in the fitness industry from the business and product side. Performance, discipline, and continuous improvement.",
   },
   nav: {
     about: "About",
@@ -17,9 +17,9 @@ const dictionary = {
     eyebrow: "Buenos Aires, Argentina",
     titleLine1: "Valentin",
     titleLine2: "Zandoli.",
-    titleMuted: "Ops & Data.",
+    titleMuted: "Business & Fitness.",
     description:
-      "Industrial Engineer specializing in operations analytics for logistics and delivery. I turn data into decisions and processes into scalable systems.",
+      "Industrial Engineer working in operations and business analytics. Interested in building in the fitness industry from the business and product side. Performance, discipline, and continuous improvement.",
     ctaPrimary: "View experience",
     ctaSecondary: "Contact",
   },
@@ -28,7 +28,7 @@ const dictionary = {
     paragraphs: [
       "I'm an <strong>Industrial Engineer</strong> focused on operations, data, and continuous improvement. My background combines quantitative analysis with business judgment in high-velocity environments.",
       "At Rappi, I work on <strong>courier performance, delivery times, and city-level metrics</strong> across Argentina — building reports, dashboards, and tools that speed up decision-making for Regional General Managers.",
-      "I'm drawn to the intersection of <strong>data, operations, and product</strong>: automating the repetitive, scaling what works, and finding the insight that moves the needle.",
+      "Beyond analytics, I'm drawn to the <strong>fitness industry</strong> — not as a coach or trainer, but from the business side: how companies scale, how products get built, and where data can move the needle in health and performance.",
     ],
     skills: {
       dataAndSql: { label: "Data & SQL", tags: ["Snowflake", "SQL", "Python"] },
