@@ -10,8 +10,7 @@ const dictionary: Dictionary = {
     about: "Sobre mí",
     experience: "Experiencia",
     education: "Educación",
-    projects: "Proyectos",
-    fitness: "Fitness",
+    interests: "Intereses",
     blog: "Blog",
     contact: "Contacto",
   },
@@ -23,13 +22,13 @@ const dictionary: Dictionary = {
     description:
       "Ingeniero Industrial trabajando en operaciones y business analytics. Con interés en construir en la industria fitness desde el lado del negocio y el producto. Rendimiento, disciplina y mejora continua.",
     ctaPrimary: "Ver experiencia",
-    ctaSecondary: "Contacto",
+    ctaSecondary: "Mis intereses",
   },
   about: {
     label: "Sobre mí",
     paragraphs: [
       "Soy <strong>Ingeniero Industrial</strong> con foco en operaciones, datos y mejora continua. Mi experiencia combina análisis cuantitativo con visión de negocio en entornos de alta velocidad.",
-      "En Rappi trabajo sobre <strong>métricas de repartidores, tiempos de entrega y performance de ciudades</strong> en Argentina, construyendo reportes, dashboards y herramientas que aceleran la toma de decisiones.",
+      "Trabajo en <strong>análisis operativo para negocios de alta velocidad</strong> — construyendo los reportes, dashboards y herramientas de decisión que ayudan a los equipos a moverse más rápido con mejor información.",
       "Más allá del análisis, me atrae la <strong>industria del fitness</strong> — no como coach ni entrenador, sino desde el lado del negocio: cómo escalan las empresas, cómo se construyen productos, y dónde los datos pueden mover la aguja en salud y performance.",
     ],
     skills: {
@@ -113,38 +112,36 @@ const dictionary: Dictionary = {
       },
     ],
   },
-  projects: {
-    label: "Proyectos",
+  interests: {
+    label: "Intereses",
     intro:
-      "Proyectos seleccionados aplicando habilidades de datos, operaciones y automatización — construidos para afilar las mismas herramientas que uso en el trabajo, sumando más a medida que los desarrollo.",
-    statusLabels: {
-      concept: "Concepto",
-      inProgress: "En progreso",
-      planned: "Planeado",
+      "Algunas cosas que me interesan genuinamente — más allá del trabajo. Algunas son áreas en las que quiero construir. Otras son simplemente parte de cómo vivo.",
+    training: {
+      title: "Entrenamiento & Gym",
+      description:
+        "El entrenamiento de fuerza, el trabajo híbrido y el culturismo son parte de mi vida hace años. Entreno con la misma mentalidad de seguimiento que uso con datos — registrando progreso, probando variables, iterando.",
+      tags: ["Fuerza", "Hipertrofia", "Híbrido", "Culturismo", "Running"],
+      journalLabel: "Diario de entrenamiento",
+      logLabel: "Training log",
     },
-    items: [
-      {
-        title: "Delivery Performance Dashboard",
-        status: "concept",
-        description:
-          "Un concepto de dashboard en Looker/Snowflake para seguir utilización de repartidores, tiempos de entrega (ATA/SLA) y cobertura por ciudad — generalizado a partir del trabajo de reporting que hago en Rappi.",
-        tags: ["Snowflake", "SQL", "Looker", "KPIs"],
-      },
-      {
-        title: "Operational Workflow Automation",
-        status: "concept",
-        description:
-          "Un concepto de automatización RPA/Python para tareas operativas repetitivas, basado en mi experiencia documentando automatizaciones con Blue Prism y explorando herramientas de IA para operaciones.",
-        tags: ["Python", "RPA", "Blue Prism", "Automatización"],
-      },
-      {
-        title: "City-Level Reporting Pipeline",
-        status: "planned",
-        description:
-          "Un pipeline en Python + SQL para automatizar los reportes semanales de performance por ciudad, reemplazando el trabajo manual en planillas por un proceso programado y repetible.",
-        tags: ["Python", "SQL", "Automatización", "APIs"],
-      },
-    ],
+    peptides: {
+      title: "Péptidos & Optimización",
+      description:
+        "Estoy metido en optimización de performance — péptidos, protocolos de recuperación, salud hormonal. Lo abordo de manera analítica: qué dice la evidencia, qué funciona en la práctica, qué vale el riesgo.",
+      tags: ["Péptidos", "Recuperación", "Protocolos", "Biohacking"],
+    },
+    wellness: {
+      title: "Bienestar & Salud",
+      description:
+        "El sueño, la nutrición y la recuperación son la infraestructura detrás de la performance — en el gym y en el trabajo. Me interesa optimizar el sistema completo, no solo partes aisladas.",
+      tags: ["Sueño", "Nutrición", "Recuperación", "Mindset", "Bienestar"],
+    },
+    business: {
+      title: "Business & Emprendimiento",
+      description:
+        "La industria fitness es uno de los espacios de negocio más interesantes hoy — desatendida por operadores reales y pensamiento basado en datos. Me interesa construir acá: productos, marcas o ventures en la intersección de salud y negocios.",
+      tags: ["Industria Fitness", "Producto", "Emprendimiento", "Marcas"],
+    },
   },
   fitness: {
     label: "Fitness & Lifestyle",
@@ -173,11 +170,21 @@ const dictionary: Dictionary = {
       viewAll: "Ver todas las entradas",
       empty: "Próximamente nuevas entradas.",
     },
+    log: {
+      label: "Training Log",
+      intro: "Cada sesión, registrada. Filtrá por tipo u ordená por fecha.",
+      empty: "Todavía no hay sesiones registradas.",
+      filterAll: "Todas",
+      sortNewest: "Más reciente",
+      sortOldest: "Más antigua",
+      feeling: "Feeling",
+      bodyweight: "Peso corporal",
+    },
   },
   blog: {
     label: "Blog",
     intro:
-      "Notas sobre datos, operaciones, automatización y alguna que otra incursión en entrenamiento y tecnología.",
+      "Notas sobre datos, negocios e industria fitness — y cómo pienso sobre el entrenamiento, la optimización y construir cosas.",
     readMore: "Leer más",
     empty: "Próximamente los primeros posts.",
     backToBlog: "Volver al blog",

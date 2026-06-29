@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Syne } from "next/font/google";
+import { Inter, Lato } from "next/font/google";
 import { notFound } from "next/navigation";
 import "../globals.css";
 import { Nav } from "@/components/nav/Nav";
@@ -14,9 +14,9 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const syne = Syne({
+const syne = Lato({
   subsets: ["latin"],
-  weight: ["400", "700", "800"],
+  weight: ["400", "700", "900"],
   variable: "--font-syne",
 });
 

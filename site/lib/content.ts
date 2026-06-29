@@ -5,7 +5,7 @@ import { remark } from "remark";
 import html from "remark-html";
 import type { Locale } from "@/content/dictionaries/i18n-config";
 
-export type Collection = "blog" | "journey";
+export type Collection = "blog" | "journey" | "log";
 
 export type ContentMeta = {
   slug: string;
@@ -13,6 +13,8 @@ export type ContentMeta = {
   date: string;
   excerpt: string;
   tags: string[];
+  feeling?: string;
+  bodyweight?: string;
 };
 
 export type ContentEntry = ContentMeta & { contentHtml: string };
@@ -44,6 +46,8 @@ export function getAllEntries(collection: Collection, locale: Locale): ContentMe
         date: data.date as string,
         excerpt: data.excerpt as string,
         tags: (data.tags as string[]) ?? [],
+        feeling: data.feeling as string | undefined,
+        bodyweight: data.bodyweight as string | undefined,
       };
     })
     .sort((a, b) => b.date.localeCompare(a.date));

@@ -8,8 +8,7 @@ const dictionary = {
     about: "About",
     experience: "Experience",
     education: "Education",
-    projects: "Projects",
-    fitness: "Fitness",
+    interests: "Interests",
     blog: "Blog",
     contact: "Contact",
   },
@@ -21,13 +20,13 @@ const dictionary = {
     description:
       "Industrial Engineer working in operations and business analytics. Interested in building in the fitness industry from the business and product side. Performance, discipline, and continuous improvement.",
     ctaPrimary: "View experience",
-    ctaSecondary: "Contact",
+    ctaSecondary: "My interests",
   },
   about: {
     label: "About me",
     paragraphs: [
       "I'm an <strong>Industrial Engineer</strong> focused on operations, data, and continuous improvement. My background combines quantitative analysis with business judgment in high-velocity environments.",
-      "At Rappi, I work on <strong>courier performance, delivery times, and city-level metrics</strong> across Argentina — building reports, dashboards, and tools that speed up decision-making for Regional General Managers.",
+      "I work in <strong>operations analytics for high-velocity businesses</strong> — building the reports, dashboards, and decision tools that help teams move faster with better information.",
       "Beyond analytics, I'm drawn to the <strong>fitness industry</strong> — not as a coach or trainer, but from the business side: how companies scale, how products get built, and where data can move the needle in health and performance.",
     ],
     skills: {
@@ -111,38 +110,36 @@ const dictionary = {
       },
     ],
   },
-  projects: {
-    label: "Projects",
+  interests: {
+    label: "Interests",
     intro:
-      "Selected projects applying data, operations, and automation skills — built to sharpen the same tools I use at work, with more added as I build them.",
-    statusLabels: {
-      concept: "Concept",
-      inProgress: "In progress",
-      planned: "Planned",
+      "A few things I'm genuinely into — beyond work. Some of these are areas I want to build in. Others are just part of how I live.",
+    training: {
+      title: "Training & Gym",
+      description:
+        "Strength training, hybrid work, and bodybuilding have been part of my life for years. I train with the same tracking mindset I use with data — logging progress, testing variables, iterating.",
+      tags: ["Strength", "Hypertrophy", "Hybrid", "Bodybuilding", "Running"],
+      journalLabel: "Training journal",
+      logLabel: "Training log",
     },
-    items: [
-      {
-        title: "Delivery Performance Dashboard",
-        status: "concept",
-        description:
-          "A Looker/Snowflake dashboard concept tracking courier utilization, delivery times (ATA/SLA), and city-level coverage — generalized from the reporting work I do at Rappi.",
-        tags: ["Snowflake", "SQL", "Looker", "KPIs"],
-      },
-      {
-        title: "Operational Workflow Automation",
-        status: "concept",
-        description:
-          "An RPA/Python automation concept for repetitive operational tasks, building on my experience documenting Blue Prism automations and exploring AI tools for ops.",
-        tags: ["Python", "RPA", "Blue Prism", "Automation"],
-      },
-      {
-        title: "City-Level Reporting Pipeline",
-        status: "planned",
-        description:
-          "A Python + SQL pipeline to automate the weekly city-by-city performance reports, replacing manual spreadsheet work with a scheduled, repeatable process.",
-        tags: ["Python", "SQL", "Automation", "APIs"],
-      },
-    ],
+    peptides: {
+      title: "Peptides & Optimization",
+      description:
+        "I'm deep into performance optimization — peptides, recovery protocols, hormonal health. I approach it analytically: what does the research say, what works in practice, what's worth the risk.",
+      tags: ["Peptides", "Recovery", "Protocols", "Biohacking"],
+    },
+    wellness: {
+      title: "Wellness & Health",
+      description:
+        "Sleep, nutrition, and recovery are the infrastructure behind performance — in the gym and at work. I care about optimizing the whole system, not just individual parts.",
+      tags: ["Sleep", "Nutrition", "Recovery", "Mindset", "Wellness"],
+    },
+    business: {
+      title: "Business & Entrepreneurship",
+      description:
+        "The fitness industry is one of the most interesting business spaces right now — underserved by real operators and data-driven thinking. I'm interested in building here: products, brands, or ventures at the intersection of health and business.",
+      tags: ["Fitness Industry", "Product", "Entrepreneurship", "Brands"],
+    },
   },
   fitness: {
     label: "Fitness & Lifestyle",
@@ -171,11 +168,21 @@ const dictionary = {
       viewAll: "View all entries",
       empty: "New entries coming soon.",
     },
+    log: {
+      label: "Training Log",
+      intro: "Every session, logged. Filter by type or sort by date.",
+      empty: "No sessions logged yet.",
+      filterAll: "All",
+      sortNewest: "Newest first",
+      sortOldest: "Oldest first",
+      feeling: "Feeling",
+      bodyweight: "Bodyweight",
+    },
   },
   blog: {
     label: "Blog",
     intro:
-      "Notes on data, operations, automation, and the occasional detour into training and tech.",
+      "Notes on data, business, and the fitness industry — plus how I think about training, optimization, and building things.",
     readMore: "Read more",
     empty: "First posts coming soon.",
     backToBlog: "Back to blog",
