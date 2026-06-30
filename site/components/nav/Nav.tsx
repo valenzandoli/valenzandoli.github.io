@@ -10,8 +10,7 @@ export function Nav({ locale, dict }: { locale: Locale; dict: Dictionary }) {
     { href: `${home}#about`, label: dict.nav.about },
     { href: `${home}#experience`, label: dict.nav.experience },
     { href: `${home}#education`, label: dict.nav.education },
-    { href: `${home}/projects`, label: dict.nav.projects },
-    { href: `${home}/fitness`, label: dict.nav.fitness },
+    { href: `${home}/interests`, label: dict.nav.interests },
     { href: `${home}/blog`, label: dict.nav.blog },
     { href: `${home}#contact`, label: dict.nav.contact },
   ];

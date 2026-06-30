@@ -21,7 +21,7 @@ export function Hero({ locale, dict }: { locale: string; dict: Dictionary }) {
       <p className="mb-10 max-w-[520px] text-[17px] leading-relaxed text-muted">
         {dict.hero.description}
       </p>
-      <div className="flex flex-wrap gap-4">
+      <div className="flex flex-wrap items-center gap-4">
         <Button href={`/${locale}#experience`} variant="primary">
           {dict.hero.ctaPrimary}
         </Button>
