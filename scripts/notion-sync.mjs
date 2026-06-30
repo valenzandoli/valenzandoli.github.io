@@ -12,10 +12,7 @@ if (!NOTION_TOKEN || !NOTION_DATABASE_ID) {
 
 const notion = new Client({ auth: NOTION_TOKEN });
 
-const LOG_DIRS = [
-  path.resolve("site/content/log/en"),
-  path.resolve("site/content/log/es"),
-];
+const LOG_DATA_PATH = path.resolve("site/content/log/data.json");
 
 function slugify(text) {
   return text
@@ -47,7 +44,7 @@ function getNumber(numberProp) {
   return val != null ? String(val) : "";
 }
 
-async function processPage(page) {
+function processPage(page) {
   const props = page.properties;
 
   const title = getPlainText(props.Name?.title ?? props.Title?.title ?? []);
@@ -61,31 +58,15 @@ async function processPage(page) {
 
   if (!title || !slug) {
     console.log("  Skipping page with no title or slug.");
-    return;
+    return null;
   }
 
   console.log(`  Processing: ${title} (${slug})`);
-
-  const tagsYaml = JSON.stringify(tags);
-  const frontmatter = `---
-title: "${title.replace(/"/g, '\\"')}"
-date: "${date}"
-excerpt: "${excerpt.replace(/"/g, '\\"').replace(/\n/g, "\\n")}"
-tags: ${tagsYaml}
-feeling: "${feeling.replace(/"/g, '\\"')}"
-bodyweight: "${bodyweight}"
----
-`;
-
-  for (const dir of LOG_DIRS) {
-    const outputPath = path.join(dir, `${slug}.md`);
-    writeFileSync(outputPath, frontmatter, "utf8");
-    console.log(`  Written: ${outputPath}`);
-  }
+  return { slug, title, date, excerpt, tags, feeling, bodyweight };
 }
 
 async function main() {
-  for (const dir of LOG_DIRS) mkdirSync(dir, { recursive: true });
+  mkdirSync(path.dirname(LOG_DATA_PATH), { recursive: true });
 
   console.log("Querying Notion database...");
   const response = await notion.databases.query({
@@ -99,9 +80,14 @@ async function main() {
 
   console.log(`Found ${response.results.length} published entries.`);
 
+  const sessions = [];
   for (const page of response.results) {
-    await processPage(page);
+    const entry = processPage(page);
+    if (entry) sessions.push(entry);
   }
+
+  writeFileSync(LOG_DATA_PATH, JSON.stringify(sessions, null, 2), "utf8");
+  console.log(`Written: ${LOG_DATA_PATH} (${sessions.length} sessions)`);
 
   console.log("Sync complete.");
 }

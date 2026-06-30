@@ -29,16 +29,12 @@ export default async function InterestsPage({ params }: PageProps<"/[locale]/int
   const blocks: {
     key: string;
     data: { title: string; description: string; tags: readonly string[] };
-    journalHref?: string;
-    journalLabel?: string;
     logHref?: string;
     logLabel?: string;
   }[] = [
     {
       key: "training",
       data: interests.training,
-      journalHref: `/${locale}/fitness/journey`,
-      journalLabel: interests.training.journalLabel,
       logHref: `/${locale}/fitness/log`,
       logLabel: interests.training.logLabel,
     },
@@ -54,7 +50,7 @@ export default async function InterestsPage({ params }: PageProps<"/[locale]/int
         {interests.intro}
       </p>
       <div className="grid gap-px border-[0.5px] border-border bg-border sm:grid-cols-2">
-        {blocks.map(({ key, data, journalHref, journalLabel, logHref, logLabel }) => (
+        {blocks.map(({ key, data, logHref, logLabel }) => (
           <div key={key} className="flex flex-col gap-4 bg-bg p-8">
             <h2 className="font-syne text-lg font-bold text-text">{data.title}</h2>
             <p className="text-sm leading-relaxed text-muted">{data.description}</p>
@@ -63,16 +59,8 @@ export default async function InterestsPage({ params }: PageProps<"/[locale]/int
                 <Tag key={tag}>{tag}</Tag>
               ))}
             </div>
-            {(journalHref && journalLabel) || (logHref && logLabel) ? (
+            {logHref && logLabel ? (
               <div className="mt-auto flex flex-col gap-1 pt-2">
-                {journalHref && journalLabel && (
-                  <Link
-                    href={journalHref}
-                    className="text-[13px] text-muted/60 transition-colors hover:text-accent2"
-                  >
-                    {journalLabel} →
-                  </Link>
-                )}
                 {logHref && logLabel && (
                   <Link
                     href={logHref}
