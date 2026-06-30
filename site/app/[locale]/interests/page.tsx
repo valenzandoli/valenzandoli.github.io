@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getDictionary } from "@/content/dictionaries/get-dictionary";
-import { isLocale } from "@/content/dictionaries/i18n-config";
+import { isLocale, locales } from "@/content/dictionaries/i18n-config";
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
 import { Section } from "@/components/ui/Section";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Tag } from "@/components/ui/Tag";

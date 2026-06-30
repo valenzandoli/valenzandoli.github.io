@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getDictionary } from "@/content/dictionaries/get-dictionary";
-import { isLocale } from "@/content/dictionaries/i18n-config";
+import { isLocale, locales } from "@/content/dictionaries/i18n-config";
 import { getAllEntries } from "@/lib/content";
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
 import { Section } from "@/components/ui/Section";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { LogTable } from "@/components/ui/LogTable";
