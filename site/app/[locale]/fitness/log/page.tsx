@@ -35,6 +35,7 @@ export default async function LogPage({ params }: PageProps<"/[locale]/fitness/l
         sessions={logData}
         labels={{
           filterAll: dict.fitness.log.filterAll,
+          allMonths: dict.fitness.log.allMonths,
           sortNewest: dict.fitness.log.sortNewest,
           sortOldest: dict.fitness.log.sortOldest,
           empty: dict.fitness.log.empty,

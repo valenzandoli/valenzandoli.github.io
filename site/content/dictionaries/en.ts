@@ -173,6 +173,7 @@ const dictionary = {
       intro: "Every session, logged. Filter by type or sort by date.",
       empty: "No sessions logged yet.",
       filterAll: "All",
+      allMonths: "All months",
       sortNewest: "Newest first",
       sortOldest: "Oldest first",
       feeling: "Feeling",

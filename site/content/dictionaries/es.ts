@@ -175,6 +175,7 @@ const dictionary: Dictionary = {
       intro: "Cada sesión, registrada. Filtrá por tipo u ordená por fecha.",
       empty: "Todavía no hay sesiones registradas.",
       filterAll: "Todas",
+      allMonths: "Todos los meses",
       sortNewest: "Más reciente",
       sortOldest: "Más antigua",
       feeling: "Feeling",

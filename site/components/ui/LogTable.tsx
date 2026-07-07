@@ -15,6 +15,7 @@ type LogSession = {
 
 type LogTableLabels = {
   filterAll: string;
+  allMonths: string;
   sortNewest: string;
   sortOldest: string;
   empty: string;
@@ -31,13 +32,23 @@ export function LogTable({
   labels: LogTableLabels;
   locale: string;
 }) {
-  const [activeTag, setActiveTag] = useState<string | null>(null);
+  const [activeType, setActiveType] = useState<string | null>(null);
+  const [activeMonth, setActiveMonth] = useState<string | null>(null);
   const [sortDesc, setSortDesc] = useState(true);
 
-  const allTags = Array.from(new Set(sessions.flatMap((s) => s.tags))).sort();
+  const allTypes = Array.from(new Set(sessions.map((s) => s.title))).sort();
+  const allMonths = Array.from(new Set(sessions.map((s) => s.date.slice(0, 7))))
+    .sort()
+    .reverse();
+
+  const formatMonth = (month: string) =>
+    new Intl.DateTimeFormat(locale, { month: "long", year: "numeric" }).format(
+      new Date(month + "-15T12:00:00")
+    );
 
   const filtered = sessions
-    .filter((s) => activeTag === null || s.tags.includes(activeTag))
+    .filter((s) => activeType === null || s.title === activeType)
+    .filter((s) => activeMonth === null || s.date.startsWith(activeMonth))
     .sort((a, b) => {
       const cmp = b.date.localeCompare(a.date);
       return sortDesc ? cmp : -cmp;
@@ -48,31 +59,47 @@ export function LogTable({
       <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-wrap gap-2">
           <button
-            onClick={() => setActiveTag(null)}
+            onClick={() => setActiveType(null)}
             className={`rounded px-3 py-1 text-[12px] tracking-wide transition-colors ${
-              activeTag === null ? "bg-tag-bg text-accent2" : "text-muted hover:text-text"
+              activeType === null ? "bg-tag-bg text-accent2" : "text-muted hover:text-text"
             }`}
           >
             {labels.filterAll}
           </button>
-          {allTags.map((tag) => (
+          {allTypes.map((type) => (
             <button
-              key={tag}
-              onClick={() => setActiveTag(activeTag === tag ? null : tag)}
+              key={type}
+              onClick={() => setActiveType(activeType === type ? null : type)}
               className={`rounded px-3 py-1 text-[12px] tracking-wide transition-colors ${
-                activeTag === tag ? "bg-tag-bg text-accent2" : "text-muted hover:text-text"
+                activeType === type ? "bg-tag-bg text-accent2" : "text-muted hover:text-text"
               }`}
             >
-              {tag}
+              {type}
             </button>
           ))}
         </div>
-        <button
-          onClick={() => setSortDesc((d) => !d)}
-          className="text-[12px] text-muted transition-colors hover:text-text"
-        >
-          ↕ {sortDesc ? labels.sortNewest : labels.sortOldest}
-        </button>
+        <div className="flex items-center gap-4">
+          <select
+            value={activeMonth ?? ""}
+            onChange={(e) => setActiveMonth(e.target.value || null)}
+            className={`cursor-pointer appearance-none rounded bg-transparent text-[12px] tracking-wide transition-colors ${
+              activeMonth === null ? "text-muted hover:text-text" : "text-accent2"
+            }`}
+          >
+            <option value="">{labels.allMonths}</option>
+            {allMonths.map((month) => (
+              <option key={month} value={month}>
+                {formatMonth(month)}
+              </option>
+            ))}
+          </select>
+          <button
+            onClick={() => setSortDesc((d) => !d)}
+            className="text-[12px] text-muted transition-colors hover:text-text"
+          >
+            ↕ {sortDesc ? labels.sortNewest : labels.sortOldest}
+          </button>
+        </div>
       </div>
 
       {filtered.length === 0 ? (
