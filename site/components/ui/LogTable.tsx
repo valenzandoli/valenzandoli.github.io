@@ -36,7 +36,7 @@ export function LogTable({
   const [activeMonth, setActiveMonth] = useState<string | null>(null);
   const [sortDesc, setSortDesc] = useState(true);
 
-  const allTypes = Array.from(new Set(sessions.map((s) => s.title))).sort();
+  const allTypes = Array.from(new Set(sessions.map((s) => s.title.trim()))).sort();
   const allMonths = Array.from(new Set(sessions.map((s) => s.date.slice(0, 7))))
     .sort()
     .reverse();
@@ -47,7 +47,7 @@ export function LogTable({
     );
 
   const filtered = sessions
-    .filter((s) => activeType === null || s.title === activeType)
+    .filter((s) => activeType === null || s.title.trim() === activeType)
     .filter((s) => activeMonth === null || s.date.startsWith(activeMonth))
     .sort((a, b) => {
       const cmp = b.date.localeCompare(a.date);
@@ -113,7 +113,7 @@ export function LogTable({
 
             return (
               <article
-                key={session.slug}
+                key={`${session.slug}-${session.date}-${index}`}
                 className={`grid grid-cols-1 gap-3 border-b-[0.5px] border-border py-7 sm:grid-cols-[140px_1fr] sm:gap-8 ${
                   index === 0 ? "border-t-[0.5px]" : ""
                 }`}
