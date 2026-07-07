@@ -8,6 +8,79 @@ npm run dev
 # Abrir http://localhost:3000/en
 ```
 
+**Sitio en producción:** [valenzandoli.vercel.app](https://valenzandoli.vercel.app)
+
+---
+
+## Mapa del sitio
+
+| URL | Qué es | Cómo se edita |
+| --- | --- | --- |
+| `/en` · `/es` | Home (hero, experiencia, educación, contacto) | Diccionarios `en.ts` / `es.ts` |
+| `/en/projects` | Proyectos | Diccionarios |
+| `/en/blog` | Blog | Archivos `.md` en `site/content/blog/` |
+| `/en/interests` | Intereses | Diccionarios |
+| `/en/fitness` | Fitness (hub) | Diccionarios |
+| `/en/fitness/journey` | Journey — entradas narrativas estilo blog | Archivos `.md` en `site/content/journey/` |
+| `/en/fitness/log` | **Training Log — sesiones de gym** | **Desde Notion (automático)** |
+
+---
+
+## Training Log — cargar sesiones desde Notion
+
+Esta es la parte más automática del sitio. Las sesiones de gym se cargan en una base de datos de Notion y aparecen solas en `/fitness/log`.
+
+### Cómo cargar una sesión
+
+En la base de datos de Notion, creá una fila nueva con estas propiedades:
+
+| Propiedad | Tipo | Qué va |
+| --- | --- | --- |
+| **Name** | Título | Nombre de la sesión (ej. "Push", "Pull", "Legs") |
+| **Date** | Date | Fecha de la sesión |
+| **Detalle** | Text | Los ejercicios, uno por línea (ej. `jalon 110x8`) |
+| **Feeling** | Select | Cómo te sentiste (ej. "💪 Excelente") |
+| **Weight** | Number | Peso corporal del día (ej. `103.5`) |
+| **Tags** | Multi-select | Tipo de sesión (opcional, sirve para filtrar) |
+| **Published** | Checkbox | ✅ **Tiene que estar tildado para que aparezca** |
+| **Slug** | Text | Opcional — se genera solo desde el nombre si lo dejás vacío |
+
+### Cómo llega del Notion a la página
+
+```text
+Notion  →  GitHub Action (cada 15 min)  →  site/content/log/data.json  →  Vercel redeploya  →  página actualizada
+```
+
+1. Una GitHub Action (`.github/workflows/notion-sync.yml`) corre **cada 15 minutos** y lee la base de Notion.
+2. Escribe las sesiones publicadas en `site/content/log/data.json` y commitea si hay cambios.
+3. Ese commit dispara un deploy automático de Vercel (~1 minuto).
+
+En total: una sesión nueva tarda **como máximo ~20 minutos** en aparecer en el sitio.
+
+### Si no querés esperar los 15 minutos
+
+Podés disparar el sync a mano desde GitHub:
+
+1. Ir al repo → pestaña **Actions** → workflow **Notion Sync**
+2. Click en **Run workflow** → **Run workflow**
+
+O correrlo localmente (necesita las variables de entorno del token de Notion):
+
+```bash
+cd "/Users/valenzandoli/Desktop/Personal page"
+NOTION_TOKEN=... NOTION_DATABASE_ID=... node scripts/notion-sync.mjs
+git add site/content/log/data.json && git commit -m "sync: training log" && git push
+```
+
+Los valores de `NOTION_TOKEN` y `NOTION_DATABASE_ID` están guardados como **secrets del repo en GitHub** (Settings → Secrets and variables → Actions).
+
+### Si una sesión no aparece
+
+- ¿Está tildado **Published** en Notion?
+- ¿Tiene **Name** y **Date**?
+- ¿Ya pasaron los 15 minutos del sync + 1 minuto del deploy?
+- Revisá la pestaña **Actions** en GitHub: si el último "Notion Sync" está en rojo, ahí está el error.
+
 ---
 
 ## Textos generales (títulos, descripciones, nav)
@@ -27,6 +100,8 @@ hero: {
   titleLine2: "Zandoli.",
   titleMuted: "Ops & Data.",  // ← acá
 ```
+
+> Regla general: cualquier texto que cambies, cambialo en **ambos archivos** (`en.ts` y `es.ts`).
 
 ---
 
@@ -55,8 +130,6 @@ experience: {
 **Para agregar un trabajo nuevo:** copiás uno de los objetos existentes, lo pegás al inicio del array (más reciente primero) y editás los campos.
 
 **Para editar uno existente:** encontrás el objeto por el nombre del `role` o `company` y modificás lo que necesites.
-
-Acordate de hacer el cambio en **ambos archivos** (`en.ts` y `es.ts`).
 
 ---
 
@@ -148,7 +221,9 @@ Párrafo de texto. Podés usar **negrita**, _cursiva_, listas, etc.
 
 ---
 
-## Training Journey — agregar una entrada
+## Fitness Journey — entradas narrativas
+
+Distinto del Training Log: acá van entradas **estilo blog** sobre el proceso (reflexiones, cambios de plan, hitos), no el registro diario de sesiones.
 
 Igual que el blog, pero los archivos van en:
 - `site/content/journey/en/`
@@ -187,6 +262,32 @@ Editás el `href` y el `value` del campo que necesites.
 
 ---
 
+## Deploy — cómo se publica el sitio
+
+El proyecto de Vercel está **conectado al repo de GitHub**. No hay que hacer nada manual:
+
+```
+1. Editás archivos localmente
+2. git add / git commit / git push
+3. Vercel detecta el push y deploya solo (~1 minuto)
+4. Los cambios quedan en https://valenzandoli.vercel.app
+```
+
+**Detalles de la configuración (por si algo se rompe):**
+
+- Proyecto Vercel: `valenzandoli` (team `valen-zandoli-s-projects`)
+- El **Root Directory** del proyecto está seteado en `site` desde la configuración del proyecto en Vercel (Settings → General). No va en `vercel.json` — ponerlo ahí rompe todos los deploys con un error de schema.
+- Para ver el estado de los deploys: dashboard de Vercel, o `npx vercel ls` desde `site/`.
+
+**Deploy manual de emergencia** (si el automático falla):
+
+```bash
+cd "/Users/valenzandoli/Desktop/Personal page/site"
+npx vercel --prod
+```
+
+---
+
 ## Flujo general de cambios
 
 ```
@@ -194,6 +295,14 @@ Editás el `href` y el `value` del campo que necesites.
 2. Guardás
 3. El browser en localhost:3000 se actualiza solo
 4. Si algo se rompe, revisás la consola del terminal donde corre npm run dev
+5. Conforme con todo → commit + push → Vercel deploya automáticamente
 ```
 
-Cuando estés conforme con los cambios y el sitio esté deployado en Vercel, alcanza con hacer un commit y push — Vercel detecta el cambio y redeploya automáticamente en ~1 minuto.
+**Antes de pushear, verificá que el build pase:**
+
+```bash
+cd "/Users/valenzandoli/Desktop/Personal page/site"
+npm run build
+```
+
+Si el build falla localmente, también va a fallar en Vercel.
