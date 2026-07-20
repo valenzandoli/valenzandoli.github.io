@@ -1,5 +1,23 @@
 [
   {
+    "slug": "torso",
+    "title": "Torso",
+    "date": "2026-07-18",
+    "excerpt": "Press plano\nPress militar // Vuelos lat\nJalon pecho // Pullover\nBicep mancuerna \nMartillos\nFondos // Extension polea\nTrasnuca\nPosteriores",
+    "tags": [],
+    "feeling": "💪 Excelente",
+    "bodyweight": "103"
+  },
+  {
+    "slug": "pull",
+    "title": "Pull",
+    "date": "2026-07-14",
+    "excerpt": "Remo c barra\nJalon al pecho\nBicep mancuerna\nMartillo\nFly posterior\nPullover",
+    "tags": [],
+    "feeling": "😐 Normal",
+    "bodyweight": "105"
+  },
+  {
     "slug": "push",
     "title": "Push",
     "date": "2026-07-13",
