@@ -1,5 +1,23 @@
 [
   {
+    "slug": "torso",
+    "title": "Torso",
+    "date": "2026-07-25",
+    "excerpt": "Press plano 90x6x2\nPress militar 34x8x2\nBiceps banco inclinado x3\nTriceps con soga x 3\nVuelos laterales x 3",
+    "tags": [],
+    "feeling": "💪 Excelente",
+    "bodyweight": "104.4"
+  },
+  {
+    "slug": "pull",
+    "title": "Pull",
+    "date": "2026-07-21",
+    "excerpt": "Remo c barra\nJalon al pecho\nBicep mancuerna\nMartillo\nFly posterior\nPullover",
+    "tags": [],
+    "feeling": "💪 Excelente",
+    "bodyweight": "104"
+  },
+  {
     "slug": "push",
     "title": "Push",
     "date": "2026-07-20",
