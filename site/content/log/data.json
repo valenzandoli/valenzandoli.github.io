@@ -1,5 +1,23 @@
 [
   {
+    "slug": "torso",
+    "title": "Torso",
+    "date": "2026-07-31",
+    "excerpt": "Press Plano\nPress Militar\nVuelos Laterales\nBicep 4 series\nTricep 4 Series",
+    "tags": [],
+    "feeling": "💪 Excelente",
+    "bodyweight": "104.2"
+  },
+  {
+    "slug": "pull",
+    "title": "Pull",
+    "date": "2026-07-28",
+    "excerpt": "Remo c barra\nJalon al pecho\nBicep mancuerna\nMartillo\nFly posterior\nPullover",
+    "tags": [],
+    "feeling": "💪 Excelente",
+    "bodyweight": "104"
+  },
+  {
     "slug": "push",
     "title": "Push",
     "date": "2026-07-27",
